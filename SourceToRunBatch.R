@@ -6,11 +6,13 @@
 # start_breedPopMean, start_breedPopSD, start_varCandMean,
 # end_breedPopMean, end_breedPopSD, end_varCandMean,
 # realizedBudget)
+here::i_am("SourceToRunBatch.R")
 
 percentages <- cbind(percentages, 1 - rowSums(percentages))
 idx <- ncol(percentages)+1
 percList <- lapply(apply(percentages, 1, list), unlist)
 
-rbOut <- runWithBudget(percList, bsd=burnedInBSD)
-percentages <- rbOut[,1:3]
-gain <- rbOut[,idx+5] - rbOut[,idx]
+rbOut <- runBatch(percList, bsd=burnedInBSD)
+percentages <- as.matrix(rbOut[,1:3])
+gain <- unlist(rbOut[,idx+5] - rbOut[,idx])
+# saveRDS(list(percentages, gain), file=here::here("data", "sourceRunBatch.rds"))

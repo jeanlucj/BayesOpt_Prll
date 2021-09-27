@@ -34,7 +34,7 @@ ro.r.source('LoadPackages.R')
 def objective_func(X):
     ro.globalenv['percentages'] = X.numpy()
     ro.r.source('SourceToRunBatch.R')
-    return torch.tensor(ro.globalenv['percentages']), torch.tensor(ro.globalenv['gain']).unsqueeze(-2)
+    return torch.tensor(ro.globalenv['percentages']), torch.tensor(ro.globalenv['gain']).unsqueeze(-1)
 
 # ### Model initialization
 from botorch.models.gp_regression import SingleTaskGP
@@ -71,7 +71,7 @@ stor_train_x = []
 stor_train_obj = []
 stor_traces = []
 
-print(f"\nInitialization {init_num:>2}", end="")
+print(f"\nInitialization {init_num:>2} ", end="")
 # ### Initialize the scheme and run the burn-in cycles
 ro.r.source('BreedSimCostSetup.R')
 budget_constraints = torch.tensor(ro.globalenv['budget_constraints'])
@@ -121,7 +121,7 @@ for optimization in range(n_optimizations):
             acq_function=qEI,
             bounds=bounds,
             inequality_constraints=inequality_constraints,
-            q=1,
+            q=3,
             num_restarts=NUM_RESTARTS,
             raw_samples=RAW_SAMPLES,  # used for intialization heuristic
             options={"batch_limit": 5, "maxiter": 200},

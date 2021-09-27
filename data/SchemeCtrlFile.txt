@@ -19,7 +19,7 @@ SDN CET PYT
 
 # Vector of number of entries used in each stage
 nEntries
-100 40 16
+800 140 24
 
 # Vector of number of reps used in each stage
 nReps

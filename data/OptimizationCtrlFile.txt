@@ -35,7 +35,7 @@ percentageStep
 # If the budget for PIC is very small, the number of
 # progeny in each cycle will be too small to make sense
 minNBreedingProg
-2
+5
 
 # Number of variety candidates in the last stage
 # that will go to the marketing department. Also the

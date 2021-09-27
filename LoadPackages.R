@@ -5,6 +5,9 @@
 # caused by different burn-ins
 
 ## ----load packages----------------------------
+print("*************************")
+print(paste("Loading packages for", init_num))
+print("*************************")
 ip <- installed.packages()
 packages_used <- c("AlphaSimR", "tidyverse",
                    "workflowr", "here", "devtools")
@@ -23,6 +26,3 @@ for (package in packages_devel){
 library(BreedSimCost)
 
 here::i_am("LoadPackages.R")
-
-random_seed <- 567890
-set.seed(random_seed)

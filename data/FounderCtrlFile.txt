@@ -3,7 +3,7 @@
 # It is less realistic but greatly accelerates the 
 # creation of founders. Useful for quick tests. TRUE/FALSE
 quickHaplo
-TRUE
+FALSE
 
 # Species characteristics
 # What kind of variety does the program develop?
@@ -19,7 +19,7 @@ nChr
 # Population characteristics
 # Effective size of population generating the founders
 effPopSize
-100
+500
 
 # Number of segregating sites per chromosome
 segSites
