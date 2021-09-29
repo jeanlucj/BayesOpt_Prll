@@ -5,6 +5,7 @@
 # caused by different burn-ins
 
 ## ----load packages----------------------------
+if (!exists("init_num")) init_num <- 1
 print("*************************")
 print(paste("Loading packages for", init_num))
 print("*************************")
