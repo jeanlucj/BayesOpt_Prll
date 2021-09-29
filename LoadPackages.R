@@ -9,12 +9,12 @@ print("*************************")
 print(paste("Loading packages for", init_num))
 print("*************************")
 ip <- installed.packages()
-packages_used <- c("AlphaSimR", "tidyverse",
+packages_used <- c("AlphaSimR", "dplyr",
                    "workflowr", "here", "devtools")
 for (package in packages_used){
   if (!(package %in% ip[,"Package"])) install.packages(package)
 }
-library(tidyverse)
+library(dplyr)
 
 packages_devel <- c("BreedSimCost")
 for (package in packages_devel){
