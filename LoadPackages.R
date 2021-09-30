@@ -13,7 +13,7 @@ ip <- installed.packages()
 packages_used <- c("AlphaSimR", "dplyr",
                    "workflowr", "here", "devtools")
 for (package in packages_used){
-  if (!(package %in% ip[,"Package"])) install.packages(package)
+  if (!(package %in% ip[,"Package"])) install.packages(package, repos="https://cloud.r-project.org")
 }
 library(dplyr)
 
