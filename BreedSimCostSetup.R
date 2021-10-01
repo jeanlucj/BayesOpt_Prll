@@ -1,12 +1,9 @@
 
 ## ----Initialize program-----------------------------------------------
-bsd <- initializeProgram(
-         here::here("data", "FounderCtrlFile.txt"),
-         here::here("data", "SchemeCtrlFile.txt"),
-         here::here("data", "CostsCtrlFile.txt"),
-         here::here("data", "OptimizationCtrlFile.txt")
-       )
-
+bsd <- initializeProgram("data/FounderCtrlFile.txt", 
+                         "data/SchemeCtrlFile.txt", 
+                         "data/CostsCtrlFile.txt", 
+                         "data/OptimizationCtrlFile.txt")
 
 ## ----Fill variety development pipeline------------------
 # Year 1
