@@ -9,7 +9,7 @@ if (debug){
 } else{
   n_initializations <- 6
   n_optimizations <- 1
-  n_iterations <- 500
+  n_iterations <- 250
   n_cores <- 6
 }
 n_stages <- 3

@@ -40,7 +40,7 @@ optiContEffPop
 
 # Number of breeding population progeny each cycle
 nBreedingProg
-100
+800
 
 # Number of genomic selection cycles per year in PIC
 nPopImpCycPerYear

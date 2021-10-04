@@ -11,11 +11,11 @@ FALSE
 # Assuming a workflowR directory structure, results will
 # be saved in the data folder
 saveIntermediateResults
-TRUE
+FALSE
 
 # Number of cores for parallel processing
 nCores
-3
+6
 
 # parameters for initial grid search
 # each percentage vector should be nStages + 1

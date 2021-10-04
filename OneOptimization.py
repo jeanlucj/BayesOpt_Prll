@@ -27,6 +27,7 @@ numpy2ri.activate()
 
 # Put the initialization number also in the R instance
 ro.globalenv['init_num'] = init_num
+ro.globalenv['n_iter'] = 0
 # ### Load the packages needed in the R instance
 ro.r.source('LoadPackages.R')
 
@@ -45,7 +46,7 @@ def initialize_model(train_x, train_obj):
     # define model for objective
     surrogate = SingleTaskGP(train_x, train_obj, outcome_transform=Standardize(m=1))
     mll = ExactMarginalLogLikelihood(surrogate.likelihood, surrogate)
-    # fit the models
+    # fit the model
     fit_gpytorch_model(mll)
     return surrogate
 
@@ -103,6 +104,7 @@ for optimization in range(n_optimizations):
     # run n_iter rounds of BayesOpt after the initial random batch
     for iteration in range(n_iter):
         print(f"\nInitialization {init_num:>2} Optimization {optimization:>2} Iteration {iteration:>2} of {n_iter} ", end="")
+        ro.globalenv['n_iter'] = iteration
         surrogate = initialize_model(train_x, train_obj)
     
         # define the qEI using a QMC sampler [I don't understand what this does]
