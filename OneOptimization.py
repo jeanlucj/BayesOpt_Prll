@@ -27,7 +27,7 @@ numpy2ri.activate()
 
 # Put the initialization number also in the R instance
 ro.globalenv['init_num'] = init_num
-ro.globalenv['n_iter'] = 0
+ro.globalenv['iteration'] = 0
 # ### Load the packages needed in the R instance
 ro.r.source('LoadPackages.R')
 
@@ -104,7 +104,7 @@ for optimization in range(n_optimizations):
     # run n_iter rounds of BayesOpt after the initial random batch
     for iteration in range(n_iter):
         print(f"\nInitialization {init_num:>2} Optimization {optimization:>2} Iteration {iteration:>2} of {n_iter} ", end="")
-        ro.globalenv['n_iter'] = iteration
+        ro.globalenv['iteration'] = iteration
         surrogate = initialize_model(train_x, train_obj)
     
         # define the qEI using a QMC sampler [I don't understand what this does]
@@ -139,6 +139,10 @@ for optimization in range(n_optimizations):
         train_obj = torch.cat([train_obj, new_obj])
         best_observed_obj = train_obj.max().item()
         best_observed_vec.append(best_observed_obj)
+        ro.globalenv['train_x'] = [train_x.numpy()]
+        ro.globalenv['train_obj'] = [train_obj.numpy()]
+        ro.globalenv['traces'] = best_observed_vec
+        ro.r.source('StoreOptData.R')
     stor_train_x.append([train_x.numpy()])
     stor_train_obj.append([train_obj.numpy()])
     stor_traces.append(best_observed_vec)

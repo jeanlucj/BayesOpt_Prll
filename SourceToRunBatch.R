@@ -7,7 +7,7 @@
 # end_breedPopMean, end_breedPopSD, end_varCandMean,
 # realizedBudget)
 
-if (exists("n_iter")) print(paste("SourceToRunBatch.R Iteration", n_iter))
+if (exists("iteration")) print(paste("SourceToRunBatch.R Iteration", iteration))
 
 percentages <- cbind(percentages, 1 - rowSums(percentages))
 idx <- ncol(percentages)+1
